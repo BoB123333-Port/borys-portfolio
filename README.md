@@ -2,8 +2,6 @@
 
 A high-performance, minimalist portfolio showcasing expertise in systems architecture, biometrics, and modular framework design. 
 
-**Live Demo:** [https://bob123333-port.github.io](https://bob123333-port.github.io)
-
 ---
 
 ## 🛠 Tech Stack
