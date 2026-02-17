@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borys | Systems Developer</title>
+    <style>
+        /* 1. HIDE SCROLLBAR & ANIMATIONS */
+        html { scrollbar-width: none; scroll-behavior: smooth; }
+        html::-webkit-scrollbar { display: none; }
+
+        @keyframes flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(88, 166, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0); }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #0d1117, #161b22, #0d1117, #010409);
+            background-size: 400% 400%;
+            animation: flow 15s ease infinite;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* 2. NAVIGATION */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid #30363d; display: flex;
+            justify-content: space-between; align-items: center;
+            padding: 15px 50px; z-index: 1000; box-sizing: border-box;
+        }
+        .nav-links a { color: #8b949e; text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: #58a6ff; }
+        #clock { font-family: 'Consolas', monospace; color: #58a6ff; border: 1px solid rgba(88,166,255,0.3); padding: 5px 10px; border-radius: 4px; }
+
+        /* 3. HERO */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { 
+            font-size: clamp(4rem, 15vw, 8rem); margin: 0; font-weight: 900;
+            background: linear-gradient(90deg, #58a6ff, #bc8cff, #58a6ff);
+            background-size: 200% auto; animation: flow 5s linear infinite;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(88,166,255,0.3));
+        }
+        .hero p { font-family: 'Consolas', monospace; color: #8b949e; font-size: 1.2rem; margin-top: 10px; }
+
+        /* 4. TECH BAR */
+        .skills-bar {
+            display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+            padding: 30px; background: rgba(22, 27, 34, 0.5);
+            border-top: 1px solid #30363d; border-bottom: 1px solid #30363d;
+        }
+        .skill-item { display: flex; flex-direction: column; align-items: center; transition: 0.4s; filter: grayscale(100%); opacity: 0.5; }
+        .skill-item:hover { filter: grayscale(0%); opacity: 1; transform: translateY(-5px); }
+        .skill-item img { width: 40px; height: 40px; margin-bottom: 8px; }
+
+        /* 5. CARDS */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 100px 0; border-bottom: 1px solid #21262d; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .card { background: rgba(22, 27, 34, 0.8); border: 1px solid #30363d; border-radius: 15px; overflow: hidden; transition: 0.4s; }
+        .card:hover { border-color: #58a6ff; transform: scale(1.02); }
+        
+        .card-img { height: 200px; overflow: hidden; border-bottom: 1px solid #30363d; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
+        .card:hover .card-img img { opacity: 1; transform: scale(1.1); }
+
+        .card-content { padding: 25px; }
+        .tag { color: #58a6ff; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+
+        /* 6. CONTACT */
+        .contact-box { background: rgba(22, 27, 34, 0.6); border: 1px solid #30363d; border-radius: 20px; padding: 60px; text-align: center; }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 10px; padding: 12px 25px; 
+            background: #21262d; border: 1px solid #30363d; color: white; border-radius: 8px;
+            text-decoration: none; transition: 0.3s; margin: 10px; font-weight: bold;
+        }
+        .contact-btn:hover { background: #58a6ff; color: #0d1117; border-color: #58a6ff; }
+    </style>
+</head>
+<body onload="updateClock()">
+
+    <nav>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#python">Python</a>
+            <a href="#lua">Lua</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div id="clock">00:00:00</div>
+    </nav>
+
+    <div id="home" class="hero">
+        <h1>Borys</h1>
+        <p>> Senior Systems & Automation Developer</p>
+    </div>
+
+    <div class="skills-bar">
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"><span>Python</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg"><span>Lua</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"><span>HTML5</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"><span>CSS3</span></div>
+        <div class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"><span>C++</span></div>
+    </div>
+
+    <div class="container">
+        <section id="python">
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Python Architecture</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">AI & Vision</span>
+                        <h3>Face Recognition Engine</h3>
+                        <p>Real-time biometric detection using OpenCV and optimized vision logic.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=800&q=80">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Automation</span>
+                        <h3>3-Monitor Boot System</h3>
+                        <p>Synchronized hardware startup protocols for multi-monitor workstations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lua">
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Lua Development</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80">
+                    </div>
+                    <div class="card-content">
+                        <span class="tag">Game Dev</span>
+                        <h3>Modular Frameworks</h3>
+                        <p>Creating high-performance Luau systems for competitive gaming environments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="border:none;">
+            <div class="contact-box">
+                <h2>Connection Established</h2>
+                <p>Ready for high-level technical collaboration.</p>
+                <div style="margin-top:30px;">
+                    <a href="mailto:your-email@example.com" class="contact-btn">Email Borys</a>
+                    <button onclick="copyDiscord()" class="contact-btn" id="discordBtn">Copy Discord</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString();
+            setTimeout(updateClock, 1000);
+        }
+        function copyDiscord() {
+            const tag = "Borys#0000"; // Change this!
+            navigator.clipboard.writeText(tag);
+            document.getElementById('discordBtn').innerText = "Copied!";
+            setTimeout(() => { document.getElementById('discordBtn').innerText = "Copy Discord"; }, 2000);
+        }
+    </script>
+</body>
+</html>
